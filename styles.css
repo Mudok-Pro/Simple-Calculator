@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+
+}
+div #container{
+    display: flex;
+    width:100%; 
+    height:auto;
+    border: 5px solid black ;
+    padding:10px;
+}
