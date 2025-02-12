@@ -117,6 +117,13 @@ if (num1 !== '' && operator !== ''){
     num1=display.innerHTML; 
     display.innerHTML = '';
 }
+
+document.getElementById("decimal").addEventListener("click", function() {
+    if (!display.innerHTML.includes(".")) {
+        display.innerHTML += ".";
+    }
+});
+
 console.log(operate(2,5,"+"))
 console.log(operate(2,5,"-"))
 console.log(operate(2,5,"/"))
