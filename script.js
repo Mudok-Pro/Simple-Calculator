@@ -72,6 +72,32 @@ document.getElementById("zero").addEventListener("click", function (){
 
 
 
+document.getElementById("plusOperator").addEventListener("click", function(){
+  num1 = display.innerHTML; 
+    operator = "+";
+    display.innerHTML='';
+})
+document.getElementById("minusOperator").addEventListener("click", function(){
+  num1 = display.innerHTML; 
+    operator = "-";
+    display.innerHTML='';
+})
+document.getElementById("multiplier").addEventListener("click", function(){
+  num1 = display.innerHTML; 
+    operator = "*";
+    display.innerHTML='';
+})
+document.getElementById("divider").addEventListener("click", function(){
+  num1 = display.innerHTML; 
+    operator = "/";
+    display.innerHTML='';
+})
+document.getElementById("equality").addEventListener("click", function (){
+    num2=display.innerHTML;
+   let result= operate(num1,num2,operator);
+   display.innerHTML = result;
+})
+
 console.log(operate(2,5,"+"))
 console.log(operate(2,5,"-"))
 console.log(operate(2,5,"/"))
