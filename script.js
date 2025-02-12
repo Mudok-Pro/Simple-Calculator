@@ -36,17 +36,38 @@ function operate(num1,num2,operator){
     }
 }
 /////// buttons configuration 
-document.getElementById("screen")
-document.getElementById("one").addEventListener("click", displayDate);
-document.getElementById("two").addEventListener("click", displayDate);
-document.getElementById("three").addEventListener("click", displayDate);
-document.getElementById("four").addEventListener("click", displayDate);
-document.getElementById("five").addEventListener("click", displayDate);
-document.getElementById("six").addEventListener("click", displayDate);
-document.getElementById("seven").addEventListener("click", displayDate);
-document.getElementById("eight").addEventListener("click", displayDate);
-document.getElementById("nine").addEventListener("click", displayDate);
-document.getElementById("zero").addEventListener("click", displayDate);
+ document.getElementById("screen");
+ let display= document.getElementById("screen") ;
+document.getElementById("one").addEventListener("click", function (){
+   display.innerHTML+=1;
+});
+document.getElementById("two").addEventListener("click",function (){
+    display.innerHTML+=2;
+});
+document.getElementById("three").addEventListener("click",function (){
+    display.innerHTML+=3;
+});
+document.getElementById("four").addEventListener("click",function (){
+    display.innerHTML+=4;
+});
+document.getElementById("five").addEventListener("click",function (){
+    display.innerHTML+=5;
+});
+document.getElementById("six").addEventListener("click",function (){
+    display.innerHTML+=6;
+});
+document.getElementById("seven").addEventListener("click",function (){
+    display.innerHTML+=7;
+});
+document.getElementById("eight").addEventListener("click", function (){
+    display.innerHTML+=8
+});
+document.getElementById("nine").addEventListener("click", function (){
+    display.innerHTML+=9;
+});
+document.getElementById("zero").addEventListener("click", function (){
+    display.innerHTML+=0;
+});
 
 
 
