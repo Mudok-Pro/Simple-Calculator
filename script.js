@@ -78,7 +78,9 @@ documnet.getElementById("clear").addEventListener("click", function (){
 })
 
 document.getElementById("backSpace").addEventListener("click", function (){
-    display.innerHTML
+   let backSpaced =  display.innerHTML.replace(/.$/, "");
+   display.innerHTML = backSpaced ;
+   
 })
 document.getElementById("plusOperator").addEventListener("click", function(){
   num1 = display.innerHTML; 
@@ -106,6 +108,15 @@ document.getElementById("equality").addEventListener("click", function (){
    display.innerHTML = result;
 })
 
+if (num1 !== '' && operator !== ''){
+    num2 = display.innerHTML; 
+    let result = operate(num1,num2,operator)
+    display.innerHTML =  parseFloat(result).toFixed(2);;
+    num1=result;
+} else {
+    num1=display.innerHTML; 
+    display.innerHTML = '';
+}
 console.log(operate(2,5,"+"))
 console.log(operate(2,5,"-"))
 console.log(operate(2,5,"/"))
