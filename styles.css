@@ -11,3 +11,9 @@ div #container{
     border: 5px solid black ;
     padding:10px;
 }
+#screen {
+    display: block;
+    border : 2px solid black ; 
+    width : 150px; 
+    height: 30px;
+}
