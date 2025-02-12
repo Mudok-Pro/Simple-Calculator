@@ -30,12 +30,8 @@ let operator ;
     num2 = parseFloat(num2);
 
 
-    if (isNaN(num1) || isNaN(num2)) {
-        console.log("Invalid numbers: ", num1, num2);
-        return "Error";
-    }
-
-    console.log(`Operating: ${num1} ${operator} ${num2}`);
+ 
+  
 
 
     if (operator === "+") {
@@ -51,7 +47,7 @@ let operator ;
             result = divide(num1, num2);
         }
     }
-        console.log(`Operation result: ${result}`);
+      
     return result.toFixed(2);  
 }
 
@@ -59,7 +55,7 @@ let operator ;
 
  let display= document.getElementById("screen") ;
 document.getElementById("one").addEventListener("click", function (){
-    console.log("Button 1 clicked");
+   
    display.value+=1;
 });
 document.getElementById("two").addEventListener("click",function (){
@@ -122,7 +118,7 @@ document.getElementById("equality").addEventListener("click", function() {
         num2 = display.value;
         let result = operate(num1, num2, operator);
         display.value = result;
-        console.log(`Operation: ${num1} ${operator} ${num2} = ${result}`);
+    
         num1 = result;
         num2 = null; 
         operator = null;
@@ -137,18 +133,18 @@ function handleOperatorClick(op) {
         let result = operate(num1, num2, operator);
         display.value = parseFloat(result).toFixed(2);
         num1 = result;
-        console.log(`num1 set to ${num1}`);
+       
     } else {
         if (display.value !== '') {
             num1 = display.value;
-            console.log(`num1 set to ${num1}`);
+           
         } else {
             console.log("num1 not set because display is empty");
         }
     }
     operator = op;
     display.value = '';
-    console.log(`Operator set to ${op}`);
+   
 }
 
 
