@@ -28,7 +28,16 @@ let operator ;
     let result;
     num1 = parseFloat(num1);
     num2 = parseFloat(num2);
-    
+
+
+    if (isNaN(num1) || isNaN(num2)) {
+        console.log("Invalid numbers: ", num1, num2);
+        return "Error";
+    }
+
+    console.log(`Operating: ${num1} ${operator} ${num2}`);
+
+
     if (operator === "+") {
         result = add(num1, num2);
     } else if (operator === "-") {
@@ -42,6 +51,7 @@ let operator ;
             result = divide(num1, num2);
         }
     }
+        console.log(`Operation result: ${result}`);
     return result.toFixed(2);  
 }
 
@@ -49,38 +59,39 @@ let operator ;
 
  let display= document.getElementById("screen") ;
 document.getElementById("one").addEventListener("click", function (){
-   display.innerHTML+=1;
+    console.log("Button 1 clicked");
+   display.value+=1;
 });
 document.getElementById("two").addEventListener("click",function (){
-    display.innerHTML+=2;
+    display.value+=2;
 });
 document.getElementById("three").addEventListener("click",function (){
-    display.innerHTML+=3;
+    display.value+=3;
 });
 document.getElementById("four").addEventListener("click",function (){
-    display.innerHTML+=4;
+    display.value+=4;
 });
 document.getElementById("five").addEventListener("click",function (){
-    display.innerHTML+=5;
+    display.value+=5;
 });
 document.getElementById("six").addEventListener("click",function (){
-    display.innerHTML+=6;
+    display.value+=6;
 });
 document.getElementById("seven").addEventListener("click",function (){
-    display.innerHTML+=7;
+    display.value+=7;
 });
 document.getElementById("eight").addEventListener("click", function (){
-    display.innerHTML+=8
+    display.value+=8;
 });
 document.getElementById("nine").addEventListener("click", function (){
-    display.innerHTML+=9;
+    display.value+=9;
 });
 document.getElementById("zero").addEventListener("click", function (){
-    display.innerHTML+=0;
+    display.value+=0;
 });
 
 document.getElementById("clear").addEventListener("click", function (){
-    display.innerHTML = ''; 
+    display.value = ''; 
     num1 = null;
     num2 = null;
     operator = null;
@@ -88,108 +99,63 @@ document.getElementById("clear").addEventListener("click", function (){
 })
 
 document.getElementById("backSpace").addEventListener("click", function (){
-   let backSpaced =  display.innerHTML.replace(/.$/, "");
-   display.innerHTML = backSpaced ;
+   let backSpaced =  display.value.replace(/.$/, "");
+   display.value = backSpaced ;
    
 })
-document.getElementById("plusOperator").addEventListener("click", function(){
-  num1 = display.innerHTML; 
-    operator = "+";
-    display.innerHTML='';
-})
-document.getElementById("minusOperator").addEventListener("click", function(){
-  num1 = display.innerHTML; 
-    operator = "-";
-    display.innerHTML='';
-})
-document.getElementById("multiplier").addEventListener("click", function(){
-  num1 = display.innerHTML; 
-    operator = "*";
-    display.innerHTML='';
-})
-document.getElementById("divider").addEventListener("click", function(){
-  num1 = display.innerHTML; 
-    operator = "/";
-    display.innerHTML='';
-})
+document.getElementById("plusOperator").addEventListener("click", function() {
+    handleOperatorClick("+");
+});
+document.getElementById("minusOperator").addEventListener("click", function() {
+    handleOperatorClick("-");
+});
+document.getElementById("multiplier").addEventListener("click", function() {
+    handleOperatorClick("*");
+});
+document.getElementById("divider").addEventListener("click", function() {
+    handleOperatorClick("/");
+});
+
 
 document.getElementById("equality").addEventListener("click", function() {
-    if (num1 !== null && operator !== null) {
-        num2 = display.innerHTML;
+    if (operator !== null && display.value !== '') {
+        num2 = display.value;
         let result = operate(num1, num2, operator);
-        display.innerHTML = result;
+        display.value = result;
+        console.log(`Operation: ${num1} ${operator} ${num2} = ${result}`);
         num1 = result;
         num2 = null; 
         operator = null;
+    } else {
+        console.log("Incomplete input: Cannot calculate");
     }
 });
 
-
-
-document.getElementById("plusOperator").addEventListener("click", function() { 
-if (num1 !== null && operator !== null){
-    num2 = display.innerHTML; 
-    let result = operate(num1,num2,operator)
-    display.innerHTML =  parseFloat(result).toFixed(2);;
-    num1=result;
-} else {
-    num1=display.innerHTML; 
+function handleOperatorClick(op) {
+    if (num1 !== null && operator !== null && display.value !== '') {
+        num2 = display.value;
+        let result = operate(num1, num2, operator);
+        display.value = parseFloat(result).toFixed(2);
+        num1 = result;
+        console.log(`num1 set to ${num1}`);
+    } else {
+        if (display.value !== '') {
+            num1 = display.value;
+            console.log(`num1 set to ${num1}`);
+        } else {
+            console.log("num1 not set because display is empty");
+        }
+    }
+    operator = op;
+    display.value = '';
+    console.log(`Operator set to ${op}`);
 }
-    operator = "+";
-    display.innerHTML = '';
-});
-
-document.getElementById("minusOperator").addEventListener("click", function() { 
-if (num1 !== null && operator !== null){
-    num2 = display.innerHTML; 
-    let result = operate(num1,num2,operator)
-    display.innerHTML =  parseFloat(result).toFixed(2);;
-    num1=result;
-} else {
-    num1=display.innerHTML; 
-}
-    operator = "-";
-    display.innerHTML = '';
-});
-
-
-document.getElementById("multiplier").addEventListener("click", function() { 
-if (num1 !== null && operator !== null){
-    num2 = display.innerHTML; 
-    let result = operate(num1,num2,operator)
-    display.innerHTML =  parseFloat(result).toFixed(2);;
-    num1=result;
-} else {
-    num1=display.innerHTML; 
-}
-    operator = "*";
-    display.innerHTML = '';
-});
-
-
-document.getElementById("divider").addEventListener("click", function() { 
-if (num1 !== null && operator !== null){
-    num2 = display.innerHTML; 
-    let result = operate(num1,num2,operator)
-    display.innerHTML =  parseFloat(result).toFixed(2);;
-    num1=result;
-} else {
-    num1=display.innerHTML; 
-}
-    operator = "/";
-    display.innerHTML = '';
-});
-
-
 
 
 
 document.getElementById("decimal").addEventListener("click", function() {
-    if (!display.innerHTML.includes(".")) {
-        display.innerHTML += ".";
+    if (!display.value.includes(".")) {
+        display.value += ".";
     }
 });
 
-console.log(operate(2,5,"+"))
-console.log(operate(2,5,"-"))
-console.log(operate(2,5,"/"))
