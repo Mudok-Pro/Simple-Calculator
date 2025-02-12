@@ -35,6 +35,21 @@ function operate(num1,num2,operator){
         return divide(num1,num2)
     }
 }
+/////// buttons configuration 
+document.getElementById("screen")
+document.getElementById("one").addEventListener("click", displayDate);
+document.getElementById("two").addEventListener("click", displayDate);
+document.getElementById("three").addEventListener("click", displayDate);
+document.getElementById("four").addEventListener("click", displayDate);
+document.getElementById("five").addEventListener("click", displayDate);
+document.getElementById("six").addEventListener("click", displayDate);
+document.getElementById("seven").addEventListener("click", displayDate);
+document.getElementById("eight").addEventListener("click", displayDate);
+document.getElementById("nine").addEventListener("click", displayDate);
+document.getElementById("zero").addEventListener("click", displayDate);
+
+
+
 
 console.log(operate(2,5,"+"))
 console.log(operate(2,5,"-"))
