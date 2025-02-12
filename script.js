@@ -46,7 +46,7 @@ let operator ;
 }
 
 /////// buttons configuration 
- document.getElementById("screen");
+
  let display= document.getElementById("screen") ;
 document.getElementById("one").addEventListener("click", function (){
    display.innerHTML+=1;
