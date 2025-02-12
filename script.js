@@ -24,17 +24,27 @@ let num1 ;
 let num2 ; 
 let operator ; 
  ////// a function to take two numbers and an operator 
-function operate(num1,num2,operator){
-    if (operator === "+"){
-        return add(num1,num2)
-    } else if (operator === "-"){
-        return subtract(num1,num2)
-    }else if (operator === "*"){
-        return multiply(num1,num2)
-    } else if (operator ==="/"){
-        return divide(num1,num2)
+ function operate(num1, num2, operator) {
+    let result;
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
+    
+    if (operator === "+") {
+        result = add(num1, num2);
+    } else if (operator === "-") {
+        result = subtract(num1, num2);
+    } else if (operator === "*") {
+        result = multiply(num1, num2);
+    } else if (operator === "/") {
+        if (num2 === 0) {
+            return "You can't divide by zero, silly!";
+        } else {
+            result = divide(num1, num2);
+        }
     }
+    return result.toFixed(2);  
 }
+
 /////// buttons configuration 
  document.getElementById("screen");
  let display= document.getElementById("screen") ;
@@ -69,11 +79,11 @@ document.getElementById("zero").addEventListener("click", function (){
     display.innerHTML+=0;
 });
 
-documnet.getElementById("clear").addEventListener("click", function (){
+document.getElementById("clear").addEventListener("click", function (){
     display.innerHTML = ''; 
-    num1 = '';
-    num2 = '';
-    operator = '';
+    num1 = null;
+    num2 = null;
+    operator = null;
 
 })
 
@@ -102,21 +112,77 @@ document.getElementById("divider").addEventListener("click", function(){
     operator = "/";
     display.innerHTML='';
 })
-document.getElementById("equality").addEventListener("click", function (){
-    num2=display.innerHTML;
-   let result= operate(num1,num2,operator);
-   display.innerHTML = result;
-})
 
-if (num1 !== '' && operator !== ''){
+document.getElementById("equality").addEventListener("click", function() {
+    if (num1 !== null && operator !== null) {
+        num2 = display.innerHTML;
+        let result = operate(num1, num2, operator);
+        display.innerHTML = result;
+        num1 = result;
+        num2 = null; 
+        operator = null;
+    }
+});
+
+
+
+document.getElementById("plusOperator").addEventListener("click", function() { 
+if (num1 !== null && operator !== null){
     num2 = display.innerHTML; 
     let result = operate(num1,num2,operator)
     display.innerHTML =  parseFloat(result).toFixed(2);;
     num1=result;
 } else {
     num1=display.innerHTML; 
-    display.innerHTML = '';
 }
+    operator = "+";
+    display.innerHTML = '';
+});
+
+document.getElementById("minusOperator").addEventListener("click", function() { 
+if (num1 !== null && operator !== null){
+    num2 = display.innerHTML; 
+    let result = operate(num1,num2,operator)
+    display.innerHTML =  parseFloat(result).toFixed(2);;
+    num1=result;
+} else {
+    num1=display.innerHTML; 
+}
+    operator = "-";
+    display.innerHTML = '';
+});
+
+
+document.getElementById("multiplier").addEventListener("click", function() { 
+if (num1 !== null && operator !== null){
+    num2 = display.innerHTML; 
+    let result = operate(num1,num2,operator)
+    display.innerHTML =  parseFloat(result).toFixed(2);;
+    num1=result;
+} else {
+    num1=display.innerHTML; 
+}
+    operator = "*";
+    display.innerHTML = '';
+});
+
+
+document.getElementById("divider").addEventListener("click", function() { 
+if (num1 !== null && operator !== null){
+    num2 = display.innerHTML; 
+    let result = operate(num1,num2,operator)
+    display.innerHTML =  parseFloat(result).toFixed(2);;
+    num1=result;
+} else {
+    num1=display.innerHTML; 
+}
+    operator = "/";
+    display.innerHTML = '';
+});
+
+
+
+
 
 document.getElementById("decimal").addEventListener("click", function() {
     if (!display.innerHTML.includes(".")) {
