@@ -69,9 +69,17 @@ document.getElementById("zero").addEventListener("click", function (){
     display.innerHTML+=0;
 });
 
+documnet.getElementById("clear").addEventListener("click", function (){
+    display.innerHTML = ''; 
+    num1 = '';
+    num2 = '';
+    operator = '';
 
+})
 
-
+document.getElementById("backSpace").addEventListener("click", function (){
+    display.innerHTML
+})
 document.getElementById("plusOperator").addEventListener("click", function(){
   num1 = display.innerHTML; 
     operator = "+";
